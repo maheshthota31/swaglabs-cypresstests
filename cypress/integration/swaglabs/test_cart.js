@@ -1,9 +1,15 @@
 describe("cart feature", function(){
-    before(function(){
+
+    before("Login to the app",function(){
         cy.visit('/');
         cy.login('standard_user','secret_sauce');
     })
-    it.skip("add the items to cart and verify", function(){
+
+    afterEach("reset the app",function(){
+        cy.resetApp();
+    })
+
+    it("add the items to cart and verify", function(){
         cy.get('.inventory_list .inventory_item')
             .eq(0)
             .find('.btn_primary.btn_inventory')
@@ -15,6 +21,7 @@ describe("cart feature", function(){
         cy.get('.fa-layers-counter.shopping_cart_badge')
             .should('have.text','2');
     })
+
     it("verify the cart showing the correct item", function(){
         cy.get('.inventory_list .inventory_item')
             .eq(1)
@@ -31,6 +38,5 @@ describe("cart feature", function(){
                         expect($elem.text()).to.eq($elem2.text())
                     })
             })
-
     })
 })

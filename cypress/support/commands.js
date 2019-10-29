@@ -9,7 +9,7 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
+
 Cypress.Commands.add("login", (username, password) => { 
     cy.get('#user-name')
         .type(username);
@@ -18,6 +18,19 @@ Cypress.Commands.add("login", (username, password) => {
     cy.get('.btn_action')
         .click() 
  })
+
+ Cypress.Commands.add("resetApp",() => {
+    cy.get('.bm-burger-button')
+        .find('button')
+        .click();
+    cy.get('#reset_sidebar_link')
+        .click();  
+    cy.get('.bm-cross-button')
+        .find('button')
+        .click();
+    
+ })
+
 //
 //
 // -- This is a child command --

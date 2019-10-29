@@ -1,9 +1,15 @@
 
 describe ("test add to cart and remove button", function(){
+
     before("Login to site", function(){
         cy.visit('/');
         cy.login('standard_user','secret_sauce');  
     })
+
+    afterEach("reset the app", function(){
+        cy.resetApp();
+    })
+
     it("add the product to cart", function(){
         cy.get('#item_5_title_link .inventory_item_name')
             .should('have.text','Sauce Labs Fleece Jacket')

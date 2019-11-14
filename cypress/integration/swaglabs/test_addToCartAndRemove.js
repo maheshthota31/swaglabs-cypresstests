@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 
 describe ("test add to cart and remove button", function(){
 
@@ -23,6 +24,6 @@ describe ("test add to cart and remove button", function(){
         cy.get('.fa-layers-counter.shopping_cart_badge')
             .should('have.text','1')
         cy.get('.btn_secondary.btn_inventory')
-            .click()        
+            .click() 
     })
 })
